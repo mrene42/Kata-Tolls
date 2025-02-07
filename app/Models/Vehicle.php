@@ -9,7 +9,7 @@ class Vehicle extends Model
     protected $fillable = [
         "type_id",
         "license",
-        "total_expense"
+        "total_expenses"
     ];
 
     public function type ()
