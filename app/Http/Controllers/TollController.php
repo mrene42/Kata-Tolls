@@ -12,7 +12,9 @@ class TollController extends Controller
      */
     public function index()
     {
-        //
+        $tolls = Toll::all();
+
+        return view('tolls', compact("toll"));
     }
 
     /**
