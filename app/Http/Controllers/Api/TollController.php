@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Vehicle;
+use App\Models\Toll;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class VehicleController extends Controller
+class TollController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $vehicles = Vehicle::all();
+        $tolls = Toll::all();
 
-        return view('vehicles', compact("vehicles"));
+        return response()->json($tolls, 200);
     }
 
     /**
@@ -30,13 +31,19 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $toll = Toll::create([
+            "name" => $request->name,
+            "city" => $request->city,
+            "collection" => 0
+        ]);
+
+        return response()->json($toll, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Vehicle $vehicle)
+    public function show(string $id)
     {
         //
     }
@@ -44,7 +51,7 @@ class VehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vehicle $vehicle)
+    public function edit(string $id)
     {
         //
     }
@@ -52,7 +59,7 @@ class VehicleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -60,7 +67,7 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vehicle $vehicle)
+    public function destroy(string $id)
     {
         //
     }
